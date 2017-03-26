@@ -13,7 +13,6 @@ Torso::Torso(string pMaterial) : Objetos(pMaterial) {
 }
 
 Torso::~Torso() {
-
 }
 
 void Torso::setDefensa(int pDef) {

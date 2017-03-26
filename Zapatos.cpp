@@ -13,7 +13,6 @@ Zapatos::Zapatos(string pMaterial) : Objetos(pMaterial) {
 }
 
 Zapatos::~Zapatos() {
-
 }
 
 void Zapatos::setDefensa(int pDef) {

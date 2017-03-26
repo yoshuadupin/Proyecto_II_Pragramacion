@@ -1,11 +1,9 @@
 #include "Garras.h"
 
 Garras::Garras() : Armas("Cestus") {
-
 }
 
 Garras::~Garras() {
-
 }
 
 void Garras::setAtaque(int atk) {

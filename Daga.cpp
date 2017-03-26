@@ -6,7 +6,6 @@ Daga::Daga() : Armas("Dirk") {
 }
 
 Daga::~Daga() {
-
 }
 
 void Daga::setAtaque(int x) {

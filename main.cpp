@@ -1,11 +1,4 @@
-#include <iostream>
-#include <fstream>
-#include <string>
-#include <unistd.h>
-#include <time.h>
-#include <stdlib.h>
-
-using namespace std;
+#include "Includes.h"
 
 char** initializeMatrix(); // Crea la matriz donde se ubicarán los enemigos, el tesoro y la fuente de salud.
 void printMatrix(char**, int); // Imprime la matriz.

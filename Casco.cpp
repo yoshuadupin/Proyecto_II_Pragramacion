@@ -13,7 +13,6 @@ Casco::Casco(string pMaterial) : Objetos(pMaterial) {
 }
 
 Casco::~Casco() {
-
 }
 
 void Casco::setDefensa(int pDef) {

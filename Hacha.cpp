@@ -1,11 +1,9 @@
 #include "Hacha.h"
 
 Hacha::Hacha() : Armas("Terminator") {
-
 }
 
 Hacha::~Hacha() {
-
 }
 
 void Hacha::setAtaque(int atk) {
