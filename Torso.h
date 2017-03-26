@@ -3,17 +3,16 @@
 #ifndef TORSO_H
 #define TORSO_H
 
-class Torso:public Objetos
-{
-protected:
-	int def;
-public:
-	Torso(string);
-	~Torso();
-	
-	void setDefensa(int);
-	int getDefensa();
+class Torso : public Objetos {
+	protected:
+		int def;
 
-	string toString();
+	public:
+		Torso(string);
+		~Torso();
+		void setDefensa(int);
+		int getDefensa();
+		string toString();
 };
+
 #endif

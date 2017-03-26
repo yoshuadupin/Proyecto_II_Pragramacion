@@ -3,17 +3,16 @@
 #ifndef CAPA_H
 #define CAPA_H
 
-class Capa: public Objetos
-{
-protected:
-	int def;
-public:
-	Capa(string);
-	~Capa();
-	
-	void setDefensa(int);
-	int getDefensa();
+class Capa : public Objetos {
+	protected:
+		int def;
 
-	string toString();
+	public:
+		Capa(string);
+		~Capa();
+		void setDefensa(int);
+		int getDefensa();
+		string toString();
 };
+
 #endif

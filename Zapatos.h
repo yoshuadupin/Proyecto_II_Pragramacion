@@ -3,17 +3,16 @@
 #ifndef ZAPATOS_H
 #define ZAPATOS_H
 
-class Zapatos:public Objetos
-{
-protected:
-	int def;
-public:
-	Zapatos(string);
-	~Zapatos();
+class Zapatos : public Objetos {
+	protected:
+		int def;
 	
-	void setDefensa(int);
-	int getDefensa();
-
-	string toString();
+	public:
+		Zapatos(string);
+		~Zapatos();
+		void setDefensa(int);
+		int getDefensa();
+		string toString();
 };
+
 #endif

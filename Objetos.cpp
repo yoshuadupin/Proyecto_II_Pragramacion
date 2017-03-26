@@ -1,16 +1,17 @@
 #include "Objetos.h"
 
-Objetos::Objetos(string pMaterial){
-	this->material=pMaterial;
+Objetos::Objetos(string pMaterial) {
+	this -> material = pMaterial;
 }
-Objetos::~Objetos(){
+
+Objetos::~Objetos() {
 
 }
-void Objetos::setMaterial(string mat){
-	this->material=mat;
+
+void Objetos::setMaterial(string mat) {
+	this -> material = mat;
 }
-string Objetos::getMaterial(){
+
+string Objetos::getMaterial() {
 	return material;
 }
-
-

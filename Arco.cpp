@@ -1,23 +1,23 @@
 #include "Arco.h"
 
-Arco::Arco():Armas("Phoenix Bow"){
+Arco::Arco() : Armas("Phoenix Bow") {
 
 }
 
-Arco::~Arco(){
+Arco::~Arco() {
 
 }
 
-void Arco::setAtaque(int atk){
-	this->ataque=atk;
+void Arco::setAtaque(int atk) {
+	this -> ataque = atk;
 }
-int Arco::getAtaque(){
+int Arco::getAtaque() {
 	return ataque;
 }
 
-string Arco::toString(){
+string Arco::toString() {
 	stringstream ss;
-	ss<<Armas::getNombre()<<"\t"<<ataque;
+	ss << Armas::getNombre() << "\t" << ataque;
+
 	return ss.str();
 }
-

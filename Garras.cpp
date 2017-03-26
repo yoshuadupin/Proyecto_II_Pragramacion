@@ -1,23 +1,24 @@
 #include "Garras.h"
 
-Garras::Garras():Armas("Cestus"){
+Garras::Garras() : Armas("Cestus") {
 
 }
 
-Garras::~Garras(){
+Garras::~Garras() {
 
 }
 
-void Garras::setAtaque(int atk){
-	this->ataque=atk;
+void Garras::setAtaque(int atk) {
+	this -> ataque = atk;
 }
-int Garras::getAtaque(){
+
+int Garras::getAtaque() {
 	return ataque;
 }
 
-string Garras::toString(){
+string Garras::toString() {
 	stringstream ss;
-	ss<<Armas::getNombre()<<"\t"<<ataque;
+	ss << Armas::getNombre() << "\t" << ataque;
+	
 	return ss.str();
 }
-

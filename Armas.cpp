@@ -1,24 +1,17 @@
 #include "Armas.h"
 
-Armas::Armas(string pNombre){
-	this->nombre=pNombre;
+Armas::Armas(string pNombre) {
+	this -> nombre = pNombre;
 
 }
 
-Armas::~Armas(){
+Armas::~Armas() {
 }
 
-void Armas::setNombre(string nNombre){
-	this->nombre=nNombre;
+void Armas::setNombre(string nNombre) {
+	this -> nombre = nNombre;
 }
 
-string Armas::getNombre(){
+string Armas::getNombre() {
 	return nombre;
 }
-
-
-
-
-
-
-

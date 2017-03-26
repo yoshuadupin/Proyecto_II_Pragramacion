@@ -3,17 +3,16 @@
 #ifndef ESPADA_H
 #define ESPADA_H
 
-class Espada:public Armas
-{
-protected:
-	int ataque;
-public:
-	Espada();
-	~Espada();
-	
-	void setAtaque(int);
-	int getAtaque();
+class Espada : public Armas {
+	protected:
+		int ataque;
 
-	string toString();
+	public:
+		Espada();
+		~Espada();
+		void setAtaque(int);
+		int getAtaque();
+		string toString();
 };
+
 #endif
