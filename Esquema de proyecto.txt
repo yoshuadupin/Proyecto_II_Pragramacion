@@ -1,0 +1,135 @@
+Definicion de Proyecto 2:
+Consoles & Dungeon's
+
+Ejemplos de Herencia 
+/////////////////////////
+Clase
+Personaje
+
+Hijos->Aliados , Enemigos del Dungeon 
+
+Aliados hijos Clases 
+
+Enemigos Hijos ,Jefes    
+
+SubJefes Clases 
+////////////////
+Clase Calabozo
+
+
+Clase Equipo
+Clase Armas y Equipo.
+
+/////////////////////
+////////////////////
+Definicion de los personajes:
+Personaje{
+	Atributos
+	\\\\\\\\\\\\\\\\\\\\\\
+	Nombre:
+	Salud:
+	Dano
+	Defensa:
+	Presicion://Si golpea o no 
+	Agilidad://Esquiva algun golpe
+	Suerte://Cuantos objetos puede que tiren al finalizar la batalla
+	Nivel://Nivel Maximo 10
+	PorcentajeCrit:
+	
+	Armas:///Dependiendo del arma puede llevar dos o una.///Podra cambiarla.
+	InventarioObjetos://///Solo aumentan los stacks.
+	\\\\\\\\\\\\\\\\\\\\\\
+
+	Metodos:
+	Puro Atacar();
+	Puro Correr();
+	Puro Defender();
+	Puro Esquivar();
+	vitual SubirNivel();
+	virtual Curarse();
+	
+
+
+
+}
+
+Aliados:Personaje{
+	atributos:
+	Exp://LLega a 100 sube de nivel.
+	///Definicion para Aliados.
+
+	virtual subirStacks();//Dependiendo del nivel y de los objetos sube las estadisticas
+	virtual burla();
+		
+
+
+}
+///Se diferencian como se instancian y con que armas
+Aliados:Guerrero{
+	
+}
+
+Aliado:Ladron{
+	
+}
+
+Aliado:Sacerdote{
+	
+}
+
+Aliado:Marginado{
+	
+}
+
+Enemigos:Personaje{
+	botarArmas;
+
+	virtual gritoAlMorir();
+	virtual gritoAlGanar();
+	virtual decidirQUeHAcer();/////Random para eligir una opcion en el menu;	
+
+}
+
+//Se diferencian como  se instancian
+
+Enemigos:Orcos{
+	
+}
+
+Enemigos:BestiasSalvajes{
+	
+}
+
+Enemigos:No muertos{
+	
+}
+
+Enemigos:Abismo{
+	
+}
+
+Enemigos:Jefes{
+	
+}
+
+Equipo{
+	
+}
+Armas:Equipo{
+	///Atributos que suben 
+	Daño;
+	Precision;
+	PorcentajeCritico;
+
+}
+
+Objetos:Equipo{
+	//Atributos
+	Vida;
+	Agilidad;
+	Suerte;
+	Defensa;
+
+}
+
+
