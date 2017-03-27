@@ -1,17 +1,13 @@
 #include "Hacha.h"
 
 Hacha::Hacha() : Armas("Terminator") {
+	ataque=35;
 }
 
 Hacha::~Hacha() {
 }
 
-void Hacha::setAtaque(int atk) {
-	this -> ataque = atk;
-}
-int Hacha::getAtaque() {
-	return ataque;
-}
+
 
 string Hacha::toString() {
 	stringstream ss;

@@ -1,5 +1,6 @@
 #pragma once
 #include "Personaje.h"
+#include <vector>
 
 class Enemigo:public Personaje
 {
@@ -7,11 +8,11 @@ public:
 	Enemigo();
 	~Enemigo();
 
-	virtual int atacar() = 0;	
-	virtual bool correr() = 0;
-	virtual int defender() = 0;
-	virtual bool esquivar() = 0;
-	
+	virtual int atacar();	
+	virtual bool correr();
+	virtual int defender();
+	virtual bool esquivar();
+	virtual string getMaterial();
 	virtual void burla();
 	
 	virtual void gritoAlMorir();

@@ -3,6 +3,25 @@
 #include <iostream>
 #include <stdlib.h>
 #include <time.h>
+#include <string>
+#include <sstream>
+
+//Objetos
+#include "Zapatos.h"
+#include "Torso.h"
+#include "Pantalones.h"
+#include "Guantes.h"
+#include "Casco.h"
+#include "Capa.h"
+
+//Armas
+#include "Arco.h"
+#include "Lanza.h"
+#include "Hacha.h"
+#include "Garras.h"
+#include "Espada.h"
+#include "Daga.h"
+
 
 using namespace std;
 
@@ -17,8 +36,7 @@ protected:
 	int suerte;
 	int num;
 	//TODO:
-	//vector<Arma*> armas;
-	//vector<Objeto*> objetos;
+
 
 public:
 	Personaje();
@@ -43,9 +61,8 @@ public:
 
 	virtual void curarse() ;
 	virtual void subirNivel();
+	virtual string getMaterial()=0;
 	
-	friend ostream& operator << (ostream&, const Personaje); // Operador de flujo.
-	int operator+(Personaje);
-
+	
 
 	};

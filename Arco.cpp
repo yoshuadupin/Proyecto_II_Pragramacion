@@ -1,17 +1,12 @@
 #include "Arco.h"
 
 Arco::Arco() : Armas("Phoenix Bow") {
+	ataque=25;
 }
 
 Arco::~Arco() {
 }
 
-void Arco::setAtaque(int atk) {
-	this -> ataque = atk;
-}
-int Arco::getAtaque() {
-	return ataque;
-}
 
 string Arco::toString() {
 	stringstream ss;
@@ -19,3 +14,6 @@ string Arco::toString() {
 
 	return ss.str();
 }
+
+
+

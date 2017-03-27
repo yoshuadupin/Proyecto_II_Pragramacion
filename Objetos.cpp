@@ -14,3 +14,10 @@ void Objetos::setMaterial(string mat) {
 string Objetos::getMaterial() {
 	return material;
 }
+void Objetos::setDefensa(int pDef) {
+	def = pDef;
+}
+
+int Objetos::getDefensa() {
+	return def;
+}

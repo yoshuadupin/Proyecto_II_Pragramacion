@@ -10,12 +10,16 @@ using namespace std;
 class Objetos {
 	protected:
 		string material;
+		int def;
 
 	public:
 		Objetos(string);
 		~Objetos();
 		void setMaterial(string);
 		string getMaterial();
+		void setDefensa(int);
+		int getDefensa();
+		virtual string toString()=0;
 };
 
 #endif

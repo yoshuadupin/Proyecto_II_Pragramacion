@@ -1,10 +1,33 @@
 #include "Orco.h"
 
 Orco::Orco(){
+	srand(time(NULL));
+	//Agrego los Objetos
+	string material=Enemigo::getMaterial();
+	Objetos* temp1=new Torso(material);
+	gear.push_back(temp1);
+
+	//Set Arma
+	int weapon=(rand() % 6);
+	
+	if(weapon==0){
+		arma=new Espada();
+	}else if(weapon==1){
+		arma=new Daga();
+	}else if(weapon==2){
+		arma=new Arco();
+	}else if(weapon==3){
+		arma= new Garras(); 
+	}else if(weapon==4){
+		arma = new Lanza();
+	}else {
+		arma = new Hacha();
+	}
+
+	ataque = arma->getAtaque();
+	defensa = gear.back()->getDefensa();
 	vida = 250;
 	nombre = "TuNovia";
-	ataque = 15;
-	defensa = 10;
 	suerte = 1;
 }
 Orco::~Orco(){

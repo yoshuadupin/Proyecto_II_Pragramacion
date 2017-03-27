@@ -2,14 +2,14 @@
 
 
 Daga::Daga() : Armas("Dirk") {
-	this -> ataque = 110;
+	 ataque = 20;
 }
 
 Daga::~Daga() {
 }
 
 void Daga::setAtaque(int x) {
-	this -> ataque = x;
+	 ataque = x;
 }
 
 int Daga::getAtaque() {

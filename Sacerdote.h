@@ -6,6 +6,10 @@ using namespace std;
 
 class Sacerdote:public Aliado
 {
+protected:
+	vector<Objetos*> gear;
+	Armas* arma;
+
 public:
 	Sacerdote();
 	~Sacerdote();

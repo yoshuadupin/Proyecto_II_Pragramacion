@@ -1,17 +1,10 @@
 #include "Lanza.h"
 
 Lanza::Lanza() : Armas("Brandistock") {
+	ataque=19;
 }
 
 Lanza::~Lanza() {
-}
-
-void Lanza::setAtaque(int atk) {
-	this -> ataque = atk;
-}
-
-int Lanza::getAtaque() {
-	return ataque;
 }
 
 string Lanza::toString() {

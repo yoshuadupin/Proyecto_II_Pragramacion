@@ -4,9 +4,6 @@
 #define DAGA_H
 
 class Daga : public Armas {
-	protected:
-		int ataque;
-		
 	public:
 		Daga();
 		~Daga();

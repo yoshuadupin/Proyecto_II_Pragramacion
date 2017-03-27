@@ -5,7 +5,9 @@ using namespace std;
 
 class BestiaSalvaje:public Enemigo
 {
-
+protected:
+	vector<Objetos*> gear;
+	Armas* arma;
 public:
 	BestiaSalvaje();
 	~BestiaSalvaje();

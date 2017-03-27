@@ -2,13 +2,13 @@
 
 Pantalones::Pantalones(string pMaterial) : Objetos(pMaterial) {
 	if (pMaterial == "Oro") {
-		this -> def = 7;
+		 def = 7;
 	} else if (pMaterial == "Plata") {
-		this -> def = 5;
+		 def = 5;
 	} else if (pMaterial == "Acero") {
-		this -> def = 3;
+		 def = 3;
 	} else {
-		this -> def = 3;
+		 def = 3;
 	}
 }
 
@@ -16,7 +16,7 @@ Pantalones::~Pantalones() {
 }
 
 void Pantalones::setDefensa(int pDef) {
-	this -> def = pDef;
+	 def = pDef;
 }
 
 int Pantalones::getDefensa() {

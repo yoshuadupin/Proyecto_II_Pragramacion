@@ -1,10 +1,43 @@
 #include "Marginado.h"
 
 Marginado::Marginado(){
+	srand(time(NULL));
+	//Agrego los Objetos
+	int def=0;
+	string material=Aliado::getMaterial();
+	Objetos* temp1=new Torso(material);
+	gear.push_back(temp1);
+	def+=gear.back()->getDefensa();
+	Objetos* temp2=new Pantalones(material);
+	gear.push_back(temp1);
+	def+=gear.back()->getDefensa();
+	Objetos* temp3=new Casco(material);
+	gear.push_back(temp3);
+	def+=gear.back()->getDefensa();
+
+	//Set Arma
+	int weapon=(rand() % 6);
+	
+	if(weapon==0){
+		arma=new Espada();
+	}else if(weapon==1){
+		arma=new Daga();
+	}else if(weapon==2){
+		arma=new Arco();
+	}else if(weapon==3){
+		arma= new Garras(); 
+	}else if(weapon==4){
+		arma = new Lanza();
+	}else {
+		arma = new Hacha();
+	}
+
+	
+	nombre = "SpeedWagon";
+	ataque = arma->getAtaque();
+	defensa = def;
 	vida = 100;
 	nombre = "Ilich";
-	ataque = 20;
-	defensa =5;
 	suerte = 1;	
 }		
 
@@ -83,3 +116,19 @@ Marginado::Marginado(){
 Marginado::~Marginado(){
 	
 }
+/*
+ostream& Marginado::operator << (ostream&, const Marginado marginado){
+	out<<marginado.toString();
+	return out;
+} // Operador de flujo.
+int Marginado::operator+(Marginado){
+	
+}
+
+string Function::toString()const {
+	stringstream ss;
+	ss<<"\nNombre: "<<nombre<<"\nVida: "<<vida<<"\nAtaque: "<<ataque<<"\nDefensa: "<<defensa<<"\nSuerte: "<<suerte;
+	ss << "\n";
+
+	return ss.str();
+}*/

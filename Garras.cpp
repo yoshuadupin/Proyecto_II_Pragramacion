@@ -1,17 +1,10 @@
 #include "Garras.h"
 
 Garras::Garras() : Armas("Cestus") {
+	 ataque=23;
 }
 
 Garras::~Garras() {
-}
-
-void Garras::setAtaque(int atk) {
-	this -> ataque = atk;
-}
-
-int Garras::getAtaque() {
-	return ataque;
 }
 
 string Garras::toString() {

@@ -4,14 +4,12 @@
 #define HACHA_H
 
 class Hacha : public Armas {
-	protected:
-		int ataque;
+
 
 	public:
 		Hacha();
 		~Hacha();
-		void setAtaque(int);
-		int getAtaque();
+
 		string toString();
 };
 

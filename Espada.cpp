@@ -1,14 +1,14 @@
 #include "Espada.h"
 
 Espada::Espada() : Armas("Excalibur") {
-	this -> ataque = 130;
+	 ataque = 30;
 }
 
 Espada::~Espada() {
 }
 
 void Espada::setAtaque(int atk) {
-	this -> ataque = atk;
+	 ataque = atk;
 }
 
 int Espada::getAtaque() {
@@ -20,3 +20,5 @@ string Espada::toString() {
 	ss << Armas::getNombre() << "\t" << ataque;
 	return ss.str();
 }
+
+ 

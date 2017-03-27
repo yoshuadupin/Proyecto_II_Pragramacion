@@ -15,3 +15,9 @@ void Armas::setNombre(string nNombre) {
 string Armas::getNombre() {
 	return nombre;
 }
+void Armas::setAtaque(int atk) {
+	this -> ataque = atk;
+}
+int Armas::getAtaque() {
+	return ataque;
+}

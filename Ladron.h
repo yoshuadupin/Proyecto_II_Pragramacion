@@ -5,10 +5,15 @@ using namespace std;
 
 class Ladron:public Aliado
 {
+protected:
+	vector<Objetos*> gear;
+	Armas* arma;
+
 public:
 	Ladron();
 	~Ladron();
 	
+
 	virtual int atacar();	
 	virtual bool correr();
 	virtual int defender();

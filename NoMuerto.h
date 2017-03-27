@@ -5,6 +5,9 @@ using namespace std;
 
 class NoMuerto:public Enemigo
 {
+protected:
+	vector<Objetos*> gear;
+	Armas* arma;
 public:
 	NoMuerto();
 	~NoMuerto();

@@ -44,18 +44,4 @@ void Personaje::setDefensa(int defensa){
 }
 
 
-ostream& Personaje::operator << (ostream&, const Personaje personaje){
-	out<<personaje.toString();
-	return out;
-} // Operador de flujo.
-int Personaje::operator+(Personaje){
-	
-}
 
-string Function::toString()const {
-	stringstream ss;
-	ss<<"\nNombre: "<<nombre<<"\nVida: "<<vida<<"\nAtaque: "<<ataque<<"\nDefensa: "<<defensa<<"\nSuerte: "<<suerte;
-	ss << "\n";
-
-	return ss.str();
-}

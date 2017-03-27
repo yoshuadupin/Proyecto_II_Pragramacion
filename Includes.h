@@ -8,6 +8,7 @@
 #include <unistd.h>
 #include <time.h>
 #include <stdlib.h>
+#include <vector>
 
 using namespace std;
 
@@ -31,12 +32,14 @@ using namespace std;
 #include "Capa.h"
 #include "Objetos.h" // Padre.
 
-#include "Personaje.h"
-#include "Aliado.h"
+// Personajes y sus hijos.
+
 #include "Guerrero.h"
 #include "Ladron.h"
+#include "Aliado.h"
 #include "Sacerdote.h"
 #include "Marginado.h"
+#include "Personaje.h"
 
 #include "Enemigo.h"
 #include "Orco.h"

@@ -4,9 +4,6 @@
 #define ESPADA_H
 
 class Espada : public Armas {
-	protected:
-		int ataque;
-
 	public:
 		Espada();
 		~Espada();

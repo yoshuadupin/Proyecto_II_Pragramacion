@@ -5,6 +5,9 @@ using namespace std;
 
 class Abismales:public Enemigo
 {
+protected:
+	vector<Objetos*> gear;
+	Armas* arma;
 public:
 	Abismales();
 	~Abismales();
