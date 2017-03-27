@@ -30,3 +30,16 @@ using namespace std;
 #include "Casco.h"
 #include "Capa.h"
 #include "Objetos.h" // Padre.
+
+#include "Personaje.h"
+#include "Aliado.h"
+#include "Guerrero.h"
+#include "Ladron.h"
+#include "Sacerdote.h"
+#include "Marginado.h"
+
+#include "Enemigo.h"
+#include "Orco.h"
+#include "BestiaSalvaje.h"
+#include "NoMuerto.h"
+#include "Abismales.h"

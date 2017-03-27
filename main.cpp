@@ -164,7 +164,7 @@ void batalla(Personaje* aliado, Personaje* enemigo){
 		}
 
 		cout<<"Accion del Enemigo:"<<endl;
-		opcion = enemigo->decidirQueHacer();
+		opcion = dynamic_cast<Enemigo*>(enemigo)->decidirQueHacer();
 
 		if(opcion == 1){
 			ataqueEne = enemigo->atacar();
@@ -186,7 +186,7 @@ void batalla(Personaje* aliado, Personaje* enemigo){
 			aliado->setVida(aliado->getVida()-ataqueTotalEne);
 			if(aliado->getVida() <= 0){
 				cout<<"Enemigo derrotado"<<endl;
-				enemigo->gritoAlMorir();
+				dynamic_cast<Enemigo*>(enemigo)->gritoAlMorir();
 				
 			}
 		}
@@ -196,21 +196,21 @@ void batalla(Personaje* aliado, Personaje* enemigo){
 			cout<<"MISS Aliado"<<endl;
 		}else if(aliado->getVida()>0){
 			cout<<"Dano: "<<ataqueEne<<endl;
-			enemigo->setVida(enmigo->getVida()-ataqueTotaA);
+			enemigo->setVida(enemigo->getVida()-ataqueTotaA);
 
 			if(aliado->getVida() <= 0){
 				cout<<"Haz Muerto"<<endl;
-				enemigo->gritoAlGanar();
+				dynamic_cast<Enemigo*>(enemigo)->gritoAlGanar();
 			}
 		}
 
-	}while(aliado->getVida() > 0 && enemigo->getVida() > 0 && !correAli && !correEnemi);	
+	}while(aliado->getVida() > 0 && enemigo->getVida() > 0 && !correA && !correEne);	
 	
-	if(correAli && aliado->getVida() > 0){
+	if(correA && aliado->getVida() > 0){
 		cout<<"Lograste Escapar"<<endl;
 	}		
 
-	if(correEnemi && enemigo->getVida()> 0){
+	if(correEne && enemigo->getVida()> 0){
 		cout<<"El enemigo huyo"<<endl;
 	}
 
