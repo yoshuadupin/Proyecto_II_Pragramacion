@@ -5,7 +5,6 @@ Objetos::Objetos(string pMaterial) {
 }
 
 Objetos::~Objetos() {
-
 }
 
 void Objetos::setMaterial(string mat) {

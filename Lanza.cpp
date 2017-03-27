@@ -1,11 +1,9 @@
 #include "Lanza.h"
 
 Lanza::Lanza() : Armas("Brandistock") {
-
 }
 
 Lanza::~Lanza() {
-
 }
 
 void Lanza::setAtaque(int atk) {

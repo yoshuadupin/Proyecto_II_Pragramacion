@@ -1,11 +1,9 @@
 #include "Arco.h"
 
 Arco::Arco() : Armas("Phoenix Bow") {
-
 }
 
 Arco::~Arco() {
-
 }
 
 void Arco::setAtaque(int atk) {

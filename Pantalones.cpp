@@ -13,7 +13,6 @@ Pantalones::Pantalones(string pMaterial) : Objetos(pMaterial) {
 }
 
 Pantalones::~Pantalones() {
-
 }
 
 void Pantalones::setDefensa(int pDef) {
