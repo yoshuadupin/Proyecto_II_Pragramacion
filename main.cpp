@@ -3,10 +3,11 @@
 char** initializeMatrix(); // Crea la matriz donde se ubicarán los enemigos, el tesoro y la fuente de salud.
 void printMatrix(char**, int); // Imprime la matriz.
 void freeMatrix(char**, int); // Libera la memoria.
-void getOut(char**, int, int, int);
+void getOut(char**, int, int, int); //
 char** setEnemies(char**, int);
-void batalla(Personaje* , Personaje*);
+bool batalla(Personaje* , Personaje*);
 bool quienInicia(int , int);
+vector<Armas*> getArmas();
 
 int main(int argc, char* argv[]) {
 	srand(time(NULL));	
@@ -94,7 +95,9 @@ void getOut(char** matrix, int size, int x, int y) {
 	printMatrix(matrix, size);
 	cout << endl;
 	usleep(300000);
+	bool won = false;
 
+	// won = batalla() Pendiente
 	if (x - 1 >= 0) { // Arriba.
 		if (matrix[x - 1][y] == '.') {
 			matrix[x][y] = '*';
@@ -102,31 +105,30 @@ void getOut(char** matrix, int size, int x, int y) {
 		}
 	}
 
-   if (y + 1 < size) { // Derecha.
-   	if (matrix[x][y + 1] == '.') {
-   		matrix[x][y] = '*';
-   		getOut(matrix, size, x, y + 1);
-   	}
-   }
+	if (y + 1 < size) { // Derecha.
+		if (matrix[x][y + 1] == '.') {
+			matrix[x][y] = '*';
+			getOut(matrix, size, x, y + 1);
+		}
+	}
 
-   if (y - 1 >= 0) { // Izquierda.
-   	if (matrix[x][y - 1] == '.') {
-   		matrix[x][y] = '*';
-   		getOut(matrix, size, x, y - 1);
-   	}
-   }
+	if (y - 1 >= 0) { // Izquierda.
+		if (matrix[x][y - 1] == '.') {
+			matrix[x][y] = '*';
+			getOut(matrix, size, x, y - 1);
+		}
+	}
 
-   if (x + 1 < size) { // Abajo.
-   	if (matrix[x + 1][y] == '.') {
-   		matrix[x][y] = '*';
-   		getOut(matrix, size, x + 1, y);
-   	}
-   }  
+	if (x + 1 < size) { // Abajo.
+		if (matrix[x + 1][y] == '.') {
+			matrix[x][y] = '*';
+			getOut(matrix, size, x + 1, y);
+		}
+	}
 }
 
-void batalla(Personaje* aliado, Personaje* enemigo){
-	int opcion;	
-	
+bool batalla(Personaje* aliado, Personaje* enemigo){
+	int opcion;
 	int ataqueA;
 	int defensaA;
 	int ataqueTotaA;
@@ -139,90 +141,98 @@ void batalla(Personaje* aliado, Personaje* enemigo){
 	bool correEne = false;
 	bool esquivarEne = false;
 
-	do{
+	do {
 		ataqueA = 0;
 		defensaA = 0;
 		ataqueEne = 0;
 		defensaEne = 0;
 
-		//Accion	
-		cout<<"Acciones:"<<endl;
-		cout<<"1.->Atacar   3.->Correr"<<endl;
-		cout<<"2.->Defender 4.->Esquivar"<<endl;
-		do{
-			cin>>opcion;
-		}while(opcion <= 0 || opcion > 4);
+		// Acción.
+
+		do {
+			cout << "Acciones: " << endl;
+			cout << "1. Atacar. \n2. Defender." << endl;
+			cout << "3. Correr. \n4. Esquivar. \nOpción:";
+			
+			cin >> opcion;
+		} while(opcion <= 0 || opcion > 4);
 		
-		if(opcion == 1){
-			ataqueA = aliado->atacar();
-		}else if(opcion == 3){
-			correA = aliado->correr();
-		}else if(opcion == 2){
-			defensaA = aliado->defender();
-		}else if(opcion == 4){
-			esquivarA = aliado->esquivar();
+		if (opcion == 1) {
+			ataqueA = aliado -> atacar();
+		} else if (opcion == 3) {
+			correA = aliado -> correr();
+		} else if (opcion == 2) {
+			defensaA = aliado -> defender();
+		} else if (opcion == 4) {
+			esquivarA = aliado -> esquivar();
 		}
 
-		cout<<"Accion del Enemigo:"<<endl;
-		opcion = dynamic_cast<Enemigo*>(enemigo)->decidirQueHacer();
+		cout << "Acción del enemigo: " << endl;
+		opcion = dynamic_cast<Enemigo*>(enemigo) -> decidirQueHacer();
 
-		if(opcion == 1){
-			ataqueEne = enemigo->atacar();
-		}else if(opcion == 3){
-			correEne = enemigo->correr();
-		}else if(opcion == 2){
-			defensaEne = enemigo->defender();
-		}else if(opcion == 4){
-			esquivarEne = enemigo->esquivar();
+		if (opcion == 1) {
+			ataqueEne = enemigo -> atacar();
+		} else if (opcion == 3) {
+			correEne = enemigo -> correr();
+		} else if (opcion == 2) {
+			defensaEne = enemigo -> defender();
+		} else if (opcion == 4) {
+			esquivarEne = enemigo -> esquivar();
 		}
 
-		ataqueTotaA = ataqueA-defensaEne;
+		ataqueTotaA = ataqueA - defensaEne;
 		ataqueTotalEne = ataqueEne - defensaA;
 
-		if(esquivarA){
-			cout<<"MISS Enemigo"<<endl;
-		}else{
-			cout<<"Dano: "<<ataqueEne<<endl;
-			aliado->setVida(aliado->getVida()-ataqueTotalEne);
-			if(aliado->getVida() <= 0){
+		if (esquivarA) {
+			cout << "MISS Enemigo" << endl;
+		} else {
+			cout << "Daño: " << ataqueEne << endl;
+			aliado -> setVida(aliado -> getVida() - ataqueTotalEne);
+
+			if (aliado -> getVida() <= 0) {
 				cout<<"Enemigo derrotado"<<endl;
-				dynamic_cast<Enemigo*>(enemigo)->gritoAlMorir();
+				dynamic_cast<Enemigo*>(enemigo) -> gritoAlMorir();
 				
 			}
 		}
 
-		
-		if(esquivarA){
-			cout<<"MISS Aliado"<<endl;
-		}else if(aliado->getVida()>0){
-			cout<<"Dano: "<<ataqueEne<<endl;
-			enemigo->setVida(enemigo->getVida()-ataqueTotaA);
+		if (esquivarA) {
+			cout << "MISS Aliado" << endl;
+		} else if (aliado -> getVida() > 0) {
+			cout << "Daño: "<< ataqueEne << endl;
+			enemigo -> setVida(enemigo -> getVida() - ataqueTotaA);
 
-			if(aliado->getVida() <= 0){
-				cout<<"Haz Muerto"<<endl;
-				dynamic_cast<Enemigo*>(enemigo)->gritoAlGanar();
+			if (aliado -> getVida() <= 0) {
+				cout << "Haz muerto" << endl;
+				dynamic_cast<Enemigo*>(enemigo) -> gritoAlGanar();
 			}
 		}
 
-	}while(aliado->getVida() > 0 && enemigo->getVida() > 0 && !correA && !correEne);	
+	} while(aliado -> getVida() > 0 && enemigo -> getVida() > 0 && !correA && !correEne);	
 	
-	if(correA && aliado->getVida() > 0){
-		cout<<"Lograste Escapar"<<endl;
+	if (correA && aliado -> getVida() > 0) {
+		cout << "Lograste escapar" << endl;
+
+		return true;
 	}		
 
-	if(correEne && enemigo->getVida()> 0){
-		cout<<"El enemigo huyo"<<endl;
+	if (correEne && enemigo -> getVida() > 0) {
+		cout << "El enemigo huyó" << endl;
+
+		return true;
 	}
 
+	if (aliado -> getVida() < 0) {
+		cout << "El enemigo huyó" << endl;
 
-}
-
-bool quienInicia(int suerteAli, int suerteEnemi){
-	if(suerteAli>suerteEnemi){
-		return true;
-	}else{
 		return false;
 	}
 }
 
-
+bool quienInicia(int suerteAli, int suerteEnemi) {
+	if (suerteAli>suerteEnemi) {
+		return true;
+	} else{
+		return false;
+	}
+}
