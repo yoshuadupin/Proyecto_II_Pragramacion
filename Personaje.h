@@ -3,6 +3,7 @@
 #include <iostream>
 #include <stdlib.h>
 #include <time.h>
+
 using namespace std;
 
 class Personaje
@@ -43,7 +44,8 @@ public:
 	virtual void curarse() ;
 	virtual void subirNivel();
 	
-	
-	
-	
-};
+	friend ostream& operator << (ostream&, const Personaje); // Operador de flujo.
+	int operator+(Personaje);
+
+
+	};

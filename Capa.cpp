@@ -13,7 +13,6 @@ Capa::Capa(string pMaterial) : Objetos(pMaterial) {
 }
 
 Capa::~Capa() {
-
 }
 
 void Capa::setDefensa(int pDef) {

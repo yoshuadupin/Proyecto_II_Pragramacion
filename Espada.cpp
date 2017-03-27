@@ -5,7 +5,6 @@ Espada::Espada() : Armas("Excalibur") {
 }
 
 Espada::~Espada() {
-
 }
 
 void Espada::setAtaque(int atk) {
@@ -15,7 +14,6 @@ void Espada::setAtaque(int atk) {
 int Espada::getAtaque() {
 	return ataque;
 }
-
 
 string Espada::toString() {
 	stringstream ss;

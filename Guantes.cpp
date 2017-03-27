@@ -13,7 +13,6 @@ Guantes::Guantes(string pMaterial) : Objetos(pMaterial) {
 }
 
 Guantes::~Guantes() {
-
 }
 
 void Guantes::setDefensa(int pDef) {
