@@ -12,8 +12,11 @@ void printMatrix(char**, int); // Imprime la matriz.
 void freeMatrix(char**, int); // Libera la memoria.
 void getOut(char**, int, int, int);
 char** setEnemies(char**, int);
+void batalla(Personaje* , Personaje*);
+bool quienInicia(int , int);
 
 int main(int argc, char* argv[]) {
+	srand(time(NULL));	
 	ifstream myfile (argv[1]);
 	
 	if (myfile.is_open()) {
@@ -127,3 +130,106 @@ void getOut(char** matrix, int size, int x, int y) {
    	}
    }  
 }
+
+void batalla(Personaje* aliado, Personaje* enemigo){
+	int opcion;	
+	
+	int ataqueA;
+	int defensaA;
+	int ataqueTotaA;
+	bool correA = false;
+	bool esquivarA = false;
+
+	int ataqueEne;
+	int defensaEne;
+	int ataqueTotalEne;
+	bool correEne = false;
+	bool esquivarEne = false;
+
+	do{
+		ataqueA = 0;
+		defensaA = 0;
+		ataqueEne = 0;
+		defensaEne = 0;
+
+		//Accion	
+		cout<<"Acciones:"<<endl;
+		cout<<"1.->Atacar   3.->Correr"<<endl;
+		cout<<"2.->Defender 4.->Esquivar"<<endl;
+		do{
+			cin>>opcion;
+		}while(opcion <= 0 || opcion > 4);
+		
+		if(opcion == 1){
+			ataqueA = aliado->atacar();
+		}else if(opcion == 3){
+			correA = aliado->correr();
+		}else if(opcion == 2){
+			defensaA = aliado->defender();
+		}else if(opcion == 4){
+			esquivarA = aliado->esquivar();
+		}
+
+		cout<<"Accion del Enemigo:"<<endl;
+		opcion = enemigo->decidirQueHacer();
+
+		if(opcion == 1){
+			ataqueEne = enemigo->atacar();
+		}else if(opcion == 3){
+			correEne = enemigo->correr();
+		}else if(opcion == 2){
+			defensaEne = enemigo->defender();
+		}else if(opcion == 4){
+			esquivarEne = enemigo->esquivar();
+		}
+
+		ataqueTotaA = ataqueA-defensaEne;
+		ataqueTotalEne = ataqueEne - defensaA;
+
+		if(esquivarA){
+			cout<<"MISS Enemigo"<<endl;
+		}else{
+			cout<<"Dano: "<<ataqueEne<<endl;
+			aliado->setVida(aliado->getVida()-ataqueTotalEne);
+			if(aliado->getVida() <= 0){
+				cout<<"Enemigo derrotado"<<endl;
+				enemigo->gritoAlMorir();
+				
+			}
+		}
+
+		
+		if(esquivarA){
+			cout<<"MISS Aliado"<<endl;
+		}else if(aliado->getVida()>0){
+			cout<<"Dano: "<<ataqueEne<<endl;
+			enemigo->setVida(enmigo->getVida()-ataqueTotaA);
+
+			if(aliado->getVida() <= 0){
+				cout<<"Haz Muerto"<<endl;
+				enemigo->gritoAlGanar();
+			}
+		}
+
+	}while(aliado->getVida() > 0 && enemigo->getVida() > 0 && !correAli && !correEnemi);	
+	
+	if(correAli && aliado->getVida() > 0){
+		cout<<"Lograste Escapar"<<endl;
+	}		
+
+	if(correEnemi && enemigo->getVida()> 0){
+		cout<<"El enemigo huyo"<<endl;
+	}
+
+
+}
+
+bool quienInicia(int suerteAli, int suerteEnemi){
+	if(suerteAli>suerteEnemi){
+		return true;
+	}else{
+		return false;
+	}
+}
+
+
