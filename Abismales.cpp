@@ -12,7 +12,7 @@ Abismales::~Abismales(){
 }
 
 int Abismales::atacar(){
-	num = rand()%100;
+	num = 5;
 	if(num<suerte){
 		return 0.5*ataque;
 	}else{

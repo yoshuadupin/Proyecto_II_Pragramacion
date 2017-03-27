@@ -12,6 +12,7 @@ vector<Armas*> getArmas();
 int main(int argc, char* argv[]) {
 	srand(time(NULL));	
 	ifstream myfile (argv[1]);
+	int option; // Opción del menú.
 	
 	if (myfile.is_open()) {
 		int cont=0;
@@ -34,10 +35,31 @@ int main(int argc, char* argv[]) {
 		}
 
 		myfile.close();
-		newMatrix = setEnemies(dungeon, 5); // El 5 es por el nivel 1.
-		cout << endl;
-		getOut(dungeon, size, 1, 0); // Implementa 
-		freeMatrix(dungeon, size);
+
+		do {
+			cout << "Ingrese el nivel (1, 2 ó 3): ";
+			cin >> option;
+
+			if (option == 1) {
+				newMatrix = setEnemies(dungeon, 5); // El 5 es por el nivel 1.
+
+				cout << endl;
+				getOut(dungeon, size, 1, 0);
+				freeMatrix(dungeon, size);
+			} else if (option == 2) {
+				newMatrix = setEnemies(dungeon, 10); // El 5 es por el nivel 1.
+
+				getOut(dungeon, size, 1, 0);
+				freeMatrix(dungeon, size);
+			} else if (option == 3) {
+				newMatrix = setEnemies(dungeon, 15); // El 5 es por el nivel 1.
+				
+				getOut(dungeon, size, 1, 0);
+				freeMatrix(dungeon, size);
+			} else {
+				option = 4;
+			}
+		} while (option != 4);
 	} else {
 		cout << "El archivo no existe"; 
 	}
@@ -95,35 +117,45 @@ void getOut(char** matrix, int size, int x, int y) {
 	printMatrix(matrix, size);
 	cout << endl;
 	usleep(300000);
-	bool won = false;
+	bool won = true;
 
-	// won = batalla() Pendiente
+	Personaje* abismal = new Abismales();
+	Personaje* enemigo = new Guerrero();
+
+	if (matrix[x][y] == 'E') {
+		won = batalla(enemigo, abismal);
+	}
+
 	if (x - 1 >= 0) { // Arriba.
-		if (matrix[x - 1][y] == '.') {
+		if ((matrix[x - 1][y] == '.' || matrix[x - 1][y] == 'E') && won) {
 			matrix[x][y] = '*';
 			getOut(matrix, size, x - 1, y);
 		}
 	}
 
 	if (y + 1 < size) { // Derecha.
-		if (matrix[x][y + 1] == '.') {
+		if ((matrix[x][y + 1] == '.' || matrix[x][y + 1] == 'E') && won) {
 			matrix[x][y] = '*';
 			getOut(matrix, size, x, y + 1);
 		}
 	}
 
 	if (y - 1 >= 0) { // Izquierda.
-		if (matrix[x][y - 1] == '.') {
+		if ((matrix[x][y - 1] == '.' || matrix[x][y - 1] == 'E') && won) {
 			matrix[x][y] = '*';
 			getOut(matrix, size, x, y - 1);
 		}
 	}
 
 	if (x + 1 < size) { // Abajo.
-		if (matrix[x + 1][y] == '.') {
+		if ((matrix[x + 1][y] == '.' || matrix[x + 1][y] == 'E') && won) {
 			matrix[x][y] = '*';
 			getOut(matrix, size, x + 1, y);
 		}
+	}
+
+	if (matrix[x][y] == 'T') {
+		cout << "Has encontrado el tesoro!" << endl;
 	}
 }
 
@@ -150,9 +182,9 @@ bool batalla(Personaje* aliado, Personaje* enemigo){
 		// Acción.
 
 		do {
-			cout << "Acciones: " << endl;
+			cout << "\nAcciones: " << endl;
 			cout << "1. Atacar. \n2. Defender." << endl;
-			cout << "3. Correr. \n4. Esquivar. \nOpción:";
+			cout << "3. Correr. \n4. Esquivar. \nOpción: ";
 			
 			cin >> opcion;
 		} while(opcion <= 0 || opcion > 4);
@@ -172,6 +204,7 @@ bool batalla(Personaje* aliado, Personaje* enemigo){
 
 		if (opcion == 1) {
 			ataqueEne = enemigo -> atacar();
+			cout << "Ataque: " << enemigo -> getAtaque() << endl;
 		} else if (opcion == 3) {
 			correEne = enemigo -> correr();
 		} else if (opcion == 2) {
@@ -182,6 +215,8 @@ bool batalla(Personaje* aliado, Personaje* enemigo){
 
 		ataqueTotaA = ataqueA - defensaEne;
 		ataqueTotalEne = ataqueEne - defensaA;
+		cout << "Ataque total aliado: " << ataqueTotaA << endl;
+		cout << "Ataque total enemigo: " << ataqueTotalEne << endl;
 
 		if (esquivarA) {
 			cout << "MISS Enemigo" << endl;
