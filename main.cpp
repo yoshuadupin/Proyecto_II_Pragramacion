@@ -4,6 +4,7 @@
 #include <unistd.h>
 #include <time.h>
 #include <stdlib.h>
+#include <sstream>
 
 using namespace std;
 
@@ -12,6 +13,7 @@ void printMatrix(char**, int); // Imprime la matriz.
 void freeMatrix(char**, int); // Libera la memoria.
 void getOut(char**, int, int, int);
 char** setEnemies(char**, int);
+int readInt();
 
 int main(int argc, char* argv[]) {
 	ifstream myfile (argv[1]);
@@ -47,7 +49,29 @@ int main(int argc, char* argv[]) {
 
 	return 0;
 }
-
+int readInt() {
+	string cad="";
+	bool esNumero=true;
+	do{
+		esNumero=true;
+		cin>>cad;
+		for (int i = 0; i < cad.size(); ++i){	
+			if(!isdigit(cad[i])){
+				esNumero=false;
+			}
+		}
+		if(!esNumero){
+			cout<<"Ingrese un Valor Entero: ";
+		}else{
+				
+			stringstream ss(cad);
+ 		    int i;
+ 			ss >> i;
+			return i;
+		}
+		cout<<endl;
+	}while(!esNumero);
+}
 char** initializeMatrix() {
 	char** matrix = new char*[20];
 

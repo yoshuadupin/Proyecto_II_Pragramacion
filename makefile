@@ -25,10 +25,10 @@ Zapatos.o: Zapatos.cpp Objetos.h Zapatos.h
 Capa.o:	Capa.cpp Objetos.h Capa.h
 	g++ -c Capa.cpp
 
-Armas.h:	Armas.cpp Armas.h
+Armas.o:	Armas.cpp Armas.h
 	g++ -c Armas.cpp
 
-Espada.h:	Espada.cpp Armas.h Espada.h
+Espada.o:	Espada.cpp Armas.h Espada.h
 	g++ -c Espada.cpp
 
 Daga.o:	Daga.cpp Armas.h Daga.h
