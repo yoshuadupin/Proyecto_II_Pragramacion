@@ -17,7 +17,9 @@ public:
 	~Aliado();
 
 	virtual string getMaterial();
-
+	int getExp(){
+	 return exp;
+	}
 	virtual int atacar();	
 	virtual bool correr();
 	virtual int defender();
@@ -28,8 +30,8 @@ public:
 	virtual void subirNivel();
 	virtual void curarse();
 
-	friend ostream& operator<<(ostream&, const Aliado); // Operador de flujo.
-	int operator+(Enemigo);
+	
+	void operator+(Enemigo);
 
 	string toString()const;
 		

@@ -32,7 +32,7 @@ Marginado::Marginado(){
 		arma = new Hacha();
 	}
 
-	
+	exp=0;
 	nombre = "SpeedWagon";
 	ataque = arma->getAtaque();
 	defensa = def;

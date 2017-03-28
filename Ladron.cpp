@@ -33,6 +33,7 @@ Ladron::Ladron(){
 	ataque = arma->getAtaque();
 	defensa = def;
 	suerte = 7;	
+	exp=0;
 }		
 
  int Ladron::atacar(){
