@@ -3,12 +3,12 @@ Instrucciones:
 Funcionamiento del Juego:
 
 - Se elige 1 de 4 personajes para adentrarse en el laberinto.
-- En el men�, el usuario podr� elegir 3 niveles de dificultad, dependiendo de la cantidad de enemigos.
-- En el laberinto, el personaje busca el tesoro. Se encontrar� con diversos enemigos (representado por la letra "E"), ubicados aleatoriamente dentro del laberinto.
-- Cuando se encuentra con un enemigo, entrar� en modo batalla. Para poder seguir buscando el tesoro, deber� ganar la batalla contra el enemigo.
-- Si el enemigo muere, deja un objeto, que ahora le pertenece al personaje, y tambi�n gana experiencia. Si la experiencia llega a 100, sube su nivel.
-- Si el personaje muere, tendr� que volver a empezar el laberinto.
-- En el momento en que se encuentre el tesoro (representado por la letra "T"), el usuario ganar�.
+- En el menú, el usuario podrá elegir 3 niveles de dificultad, dependiendo de la cantidad de enemigos.
+- En el laberinto, el aliado busca el tesoro. Se encontrará con diversos enemigos (representado por la letra "E"), ubicados aleatoriamente dentro del laberinto.
+- Cuando se encuentra con un enemigo, entrará en modo batalla. Para poder seguir buscando el tesoro, deberá ganar la batalla contra el enemigo.
+- Si el enemigo muere, deja un objeto, que ahora le pertenece al aliado, y también gana experiencia. Si la experiencia llega a 100, sube su nivel.
+- Si el aliado muere, tendrá que volver a empezar el laberinto.
+- En el momento en que se encuentre el tesoro (representado por la letra "T"), el usuario ganará.
 
 Tipos de Enemigos:
 
@@ -22,7 +22,7 @@ Tipos de Aliados:
 - Guerreros.
 - Sacerdotes.
 - Marginados.
-- Ladr�n.
+- Ladrón.
 
 Tipos de Objetos:
 
@@ -41,3 +41,9 @@ Tipos de Armas:
 - Garras.
 - Lanza.
 - Hacha.
+
+Funcionamiento de la Recursiva (Movimiento en el Laberinto):
+
+- Este método recibe la matriz que contiene los char del laberinto, el tamaño del laberinto, la coordenada en X y en Y.
+Dentro del método, se corrobora si la posición seleccionada en la matriz es una letra "E" (de "Enemigo"). Si es una "E", comenzarán a luchar.
+Si el personaje gana la lucha, entrará a una de las decisiones para seguir su camino. Si en algún punto de la pelea, el usuario pierde, el programa finalizará y la recursiva ya no será llamada.
