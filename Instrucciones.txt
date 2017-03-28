@@ -1,0 +1,43 @@
+Instrucciones: 
+
+Funcionamiento del Juego:
+
+- Se elige 1 de 4 personajes para adentrarse en el laberinto.
+- En el menú, el usuario podrá elegir 3 niveles de dificultad, dependiendo de la cantidad de enemigos.
+- En el laberinto, el personaje busca el tesoro. Se encontrará con diversos enemigos (representado por la letra "E"), ubicados aleatoriamente dentro del laberinto.
+- Cuando se encuentra con un enemigo, entrará en modo batalla. Para poder seguir buscando el tesoro, deberá ganar la batalla contra el enemigo.
+- Si el enemigo muere, deja un objeto, que ahora le pertenece al personaje, y también gana experiencia. Si la experiencia llega a 100, sube su nivel.
+- Si el personaje muere, tendrá que volver a empezar el laberinto.
+- En el momento en que se encuentre el tesoro (representado por la letra "T"), el usuario ganará.
+
+Tipos de Enemigos:
+
+- Orcos.
+- Bestias Salvajes.
+- No Muertos.
+- Abismales.
+
+Tipos de Aliados:
+
+- Guerreros.
+- Sacerdotes.
+- Marginados.
+- Ladrón.
+
+Tipos de Objetos:
+
+- Casco.
+- Guantes.
+- Pantalones.
+- Zapatos.
+- Torso.
+- Capa.
+
+Tipos de Armas:
+
+- Espada.
+- Daga.
+- Arco.
+- Garras.
+- Lanza.
+- Hacha.

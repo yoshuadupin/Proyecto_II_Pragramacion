@@ -21,6 +21,7 @@ int main(int argc, char* argv[]) {
 		int size;
 		char** dungeon = NULL;
 		char** newMatrix = NULL;
+		char** thirdMatrix = NULL;
 
 		myfile >> size;
 
@@ -34,25 +35,35 @@ int main(int argc, char* argv[]) {
 			}
 		}
 
+
 		myfile.close();
+		for(int i = 0; i < 20; i++) {
+			for(int j = 0; j < 20; j++) {
+				thirdMatrix[i][j] = dungeon[i][j];
+			}
+		}
 
 		do {
 			cout << "Ingrese el nivel (1, 2 ó 3): ";
 			cin >> option;
 
+
 			if (option == 1) {
-				newMatrix = setEnemies(dungeon, 5); // El 5 es por el nivel 1.
+				newMatrix= thirdMatrix;
+				newMatrix = setEnemies(thirdMatrix, 5); // El 5 es por el nivel 1.
 
 				cout << endl;
 				getOut(dungeon, size, 1, 0);
 				freeMatrix(dungeon, size);
 			} else if (option == 2) {
-				newMatrix = setEnemies(dungeon, 10); // El 5 es por el nivel 1.
+				newMatrix= thirdMatrix;
+				newMatrix = setEnemies(thirdMatrix, 10); // El 5 es por el nivel 1.
 
 				getOut(dungeon, size, 1, 0);
 				freeMatrix(dungeon, size);
 			} else if (option == 3) {
-				newMatrix = setEnemies(dungeon, 15); // El 5 es por el nivel 1.
+				newMatrix= thirdMatrix;
+				newMatrix = setEnemies(thirdMatrix, 15); // El 5 es por el nivel 1.
 				
 				getOut(dungeon, size, 1, 0);
 				freeMatrix(dungeon, size);
