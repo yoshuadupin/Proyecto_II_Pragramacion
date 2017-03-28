@@ -1,4 +1,6 @@
 #include "Includes.h"
+#include <ncurses.h>
+#include <curses.h>
 
 char** initializeMatrix(); // Crea la matriz donde se ubicarán los enemigos, el tesoro y la fuente de salud.
 void printMatrix(char**, int); // Imprime la matriz.
@@ -51,15 +53,22 @@ int main(int argc, char* argv[]) {
 		}
 
 		myfile.close();
-
+		initscr();
 		do {
-			cout << "Ingrese el nivel (1, 2 ó 3): ";
-			cin >> option;
+			/*cout << "Ingrese el nivel (1, 2 ó 3): ";
+			cin >> option;*/
+			move(1 , 25);
+			printw("Ingrese el nivel (1, 2 ó 3): ");
+			
+			option = getch();
+			addch(option);
+			refresh();
 
+			
 			if (option == 1) {
 				 setEnemies(level1, 5); // El 5 es por el nivel 1.
 
-				getOut(level1, size, 1, 0);
+				 getOut(level1, size, 1, 0);
 			} else if (option == 2) {
 				setEnemies(level2, 10); // El 5 es por el nivel 1.
 
@@ -78,6 +87,7 @@ int main(int argc, char* argv[]) {
 	} else {
 		cout << "El archivo no existe"; 
 	}
+	endwin();
 
 	freeMatrix(dungeon, size);
 	
@@ -110,12 +120,15 @@ void setEnemies(char** matrix, int enemies) {
 }
 
 void printMatrix(char** matrix, int size) {
+	move(1,0);
 	for (int i = 0; i < size; ++i) {
 		for (int j = 0; j < size; ++j) {
-			cout << matrix[i][j];
+			//cout << matrix[i][j];
+			mvaddch(i+1 , j , matrix[i][j]);
+			refresh();
 		}
 
-		cout << endl;
+		//cout << endl;
 	}
 }
 

@@ -1,5 +1,5 @@
 main:	main.o Objetos.o Casco.o Guantes.o Torso.o Pantalones.o Zapatos.o Capa.o Armas.o Espada.o Daga.o Arco.o Garras.o Lanza.o Hacha.o Personaje.o Aliado.o Guerrero.o Ladron.o Sacerdote.o Marginado.o Enemigo.o Orco.o BestiaSalvaje.o NoMuerto.o Abismales.o
-	g++ main.o Objetos.o Casco.o Guantes.o Torso.o Pantalones.o Zapatos.o Capa.o Armas.o Espada.o Daga.o Arco.o Garras.o Lanza.o Hacha.o Personaje.o Aliado.o Guerrero.o Ladron.o Sacerdote.o Marginado.o Enemigo.o Orco.o BestiaSalvaje.o NoMuerto.o Abismales.o -o main
+	g++ main.o Objetos.o Casco.o Guantes.o Torso.o Pantalones.o Zapatos.o Capa.o Armas.o Espada.o Daga.o Arco.o Garras.o Lanza.o Hacha.o Personaje.o Aliado.o Guerrero.o Ladron.o Sacerdote.o Marginado.o Enemigo.o Orco.o BestiaSalvaje.o NoMuerto.o Abismales.o -o main -lncurses
 
 main.o:	main.cpp Objetos.h Casco.h Guantes.h Torso.h Pantalones.h Zapatos.h Capa.h Armas.h Espada.h Daga.h Arco.h Garras.h Lanza.h Hacha.h Personaje.h Aliado.h Guerrero.h Ladron.h Sacerdote.h Marginado.h Enemigo.h Orco.h BestiaSalvaje.h NoMuerto.h Abismales.h
 	g++ -c main.cpp
