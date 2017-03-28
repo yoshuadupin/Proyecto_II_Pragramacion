@@ -60,7 +60,7 @@ int main(int argc, char* argv[]) {
 			cin >> option;
 			*/
 			move(1,21);
-			printw("Ingrese el nivel (1, 2 ó 3):");
+			printw("Ingrese el nivel (1, 2 ó 3): ");
 			refresh();
 			option = getch();
 			refresh();
@@ -94,19 +94,21 @@ int main(int argc, char* argv[]) {
 	
 	return 0;
 }
+
 char* getString(int num){
 	stringstream ss;
-	ss<<num;
+	ss << num;
 	string cad=ss.str();
 
 	char* cons=new char[cad.size()];
-	for (int i = 0; i < cad.size(); ++i)
-	{
-		cons[i]=cad.at(i);
+
+	for (int i = 0; i < cad.size(); ++i) {
+		cons[i] = cad.at(i);
 	}
 	
 	return cons;
 }
+
 char** initializeMatrix() {
 	char** matrix = new char*[20];
 
@@ -222,11 +224,12 @@ bool batalla(Personaje* aliado, Personaje* enemigo){
 
 		// Acción.
 		move(1, 21);
-		printw("Acciones");
-		mvprintw(2,21, "1.ATACAR");
-		mvprintw(3,21 , "3.CORRER");
-		mvprintw(2,30 , "2.DEFENDER");
-		mvprintw(3 , 30 , "4.ESQUIVAR");
+		printw("Acciones: ");
+		mvprintw(2, 21, "1. ATACAR");
+		mvprintw(3, 21, "3. CORRER");
+		mvprintw(2, 30, " 2. DEFENDER");
+		mvprintw(3, 30, " 4. ESQUIVAR");
+		mvprintw(4, 21, "OPCION: ");
 		refresh();
 		noecho();
 		opcion = getch();
@@ -236,46 +239,52 @@ bool batalla(Personaje* aliado, Personaje* enemigo){
 			cout << "3. Correr. \n4. Esquivar. \nOpción: ";
 			*/
 
-		
-
 		if (opcion == '1') {
-			mvprintw(5 , 21 , "->Aliado ataca");
+			mvprintw(5 , 21 , "-> Atacó!!");
 			ataqueA = aliado -> atacar();
 		} else if (opcion == '3') {
-			mvprintw(5 , 21 , "->Corrio       ");
+			mvprintw(5 , 21 , "-> Corrió!");
 			correA = aliado -> correr();
 		} else if (opcion == '2') {
-			mvprintw(5 , 21 , "->Uso defensa   ");
+			mvprintw(5 , 21 , "-> Defensa");
 			defensaA = aliado -> defender();
 		} else if (opcion == '4') {
-			mvprintw(5 , 21 , "->uso esquivar  ");
+			mvprintw(5 , 21 , "-> Esquivó");
 			esquivarA = aliado -> esquivar();
 		}
+
 		refresh();
 
 		/*cout << "Acción del enemigo: " << endl;*/
 		const char* nombre=  (enemigo->getNombre()).c_str();
+		
 		mvprintw(7 , 21 , nombre);
 		mvprintw(8 ,  21 , "Acciones de Enemigo");
 		refresh();	
+		
 		opcion = ((char)(dynamic_cast<Enemigo*>(enemigo) -> decidirQueHacer()));
 		refresh();
+		
 		if (opcion == '1') {
-			mvprintw(9 , 21 , "->Aliado ataca    ");
+			mvprintw(9 , 21 , "-> Atacó!!");
 			ataqueEne = enemigo -> atacar();
 			//cout << "Ataque: " << enemigo -> getAtaque() << endl;
+			clear();
 			refresh();
 		} else if (opcion == '3') {
-			mvprintw(9 , 21 , "->Corrio          ");
+			mvprintw(9 , 21 , "-> Corrió!");
 			correEne = enemigo -> correr();
+			clear();
 			refresh();
 		} else if (opcion == '2') {
-			mvprintw(9 , 21 , "->Uso defensa");
+			mvprintw(9 , 21 , "-> Defensa");
 			defensaEne = enemigo -> defender();
+			clear();
 			refresh();
 		} else if (opcion == '4') {
-			mvprintw(9 , 21 , "->uso esquivar");
+			mvprintw(9 , 21 , "-> Esquivó");
 			esquivarEne = enemigo -> esquivar();
+			clear();
 			refresh();
 		}
 
@@ -297,13 +306,10 @@ bool batalla(Personaje* aliado, Personaje* enemigo){
 		printw(getString(ataqueTotaA));
 		refresh();
 		
-		
 		mvprintw(12 , 22  ,"Ataque total enemigo: ");
 		printw(getString(ataqueTotalEne));
 		refresh();
-
 		
-		refresh();
 		if (esquivarA) {
 			//cout << "MISS Enemigo" << endl;
 			mvprintw(14 , 21 , "MISS ENEMIGO");				
@@ -320,6 +326,7 @@ bool batalla(Personaje* aliado, Personaje* enemigo){
 				
 			}
 		}
+
 		refresh();
 
 		if(esquivarEne) {
@@ -333,10 +340,12 @@ bool batalla(Personaje* aliado, Personaje* enemigo){
 			if (aliado -> getVida() <= 0) {
 				//cout << "Haz muerto" << endl;
 				mvprintw(17 , 21 ,"YOU DIED");
+
 				dynamic_cast<Enemigo*>(enemigo) -> gritoAlGanar();
 				return false;
 			}
 		}
+		
 		refresh();
 		getch();
 		/*mvprintw(14 , 21 ,"                    ");
@@ -351,25 +360,22 @@ bool batalla(Personaje* aliado, Personaje* enemigo){
 	if (correA && aliado -> getVida() > 0) {
 		/*cout << "Lograste escapar" << endl;
 		*/
-		mvprintw(14 , 30 , "Lograste escapar");
+		mvprintw(14 , 30 , "Lograste escapar!");
 		return true;
 	}		
 
 	if (correEne && enemigo -> getVida() > 0) {
 		//cout << "El enemigo huyó" << endl;
-		mvprintw(15 , 30 , "El enemigo huyo");
+		mvprintw(15 , 30 , "El enemigo huyó!");
 		return true;
 	}
 
 	refresh();
 	clear();
-	
-
-	
 }
 
 bool quienInicia(int suerteAli, int suerteEnemi) {
-	if (suerteAli>suerteEnemi) {
+	if (suerteAli > suerteEnemi) {
 		return true;
 	} else{
 		return false;
