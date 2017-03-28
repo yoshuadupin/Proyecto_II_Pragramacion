@@ -58,7 +58,7 @@ public:
 	virtual bool correr() = 0;
 	virtual int defender() = 0;
 	virtual bool esquivar() = 0;
-
+	virtual int EXP();
 	virtual void curarse() ;
 	virtual void subirNivel();
 	virtual string getMaterial()=0;

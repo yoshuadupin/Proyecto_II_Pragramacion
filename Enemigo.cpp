@@ -21,7 +21,6 @@ string Enemigo::getMaterial(){
 	materiales.push_back("Acero");
 	materiales.push_back("Plata");
 	materiales.push_back("Oro");
-	
 	int retVal=(rand() % 3);
 	
 	return materiales.at(retVal);
