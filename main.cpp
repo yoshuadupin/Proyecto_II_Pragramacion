@@ -4,7 +4,7 @@ char** initializeMatrix(); // Crea la matriz donde se ubicarán los enemigos, el
 void printMatrix(char**, int); // Imprime la matriz.
 void freeMatrix(char**, int); // Libera la memoria.
 void getOut(char**, int, int, int); //
-char** setEnemies(char**, int);
+void setEnemies(char**, int);
 bool batalla(Personaje* , Personaje*);
 bool quienInicia(int , int);
 vector<Armas*> getArmas();
@@ -13,19 +13,26 @@ int main(int argc, char* argv[]) {
 	srand(time(NULL));	
 	ifstream myfile (argv[1]);
 	int option; // Opción del menú.
+	int size; // Tamaño del laberinto.
+	char** dungeon = NULL; // Laberinto del texto.
+	char** level1 = NULL;
+	char** level2 = NULL;
+	char** level3 = NULL;
+	char** newMatrix1 = NULL;
+	char** newMatrix2 = NULL;
+	char** newMatrix3 = NULL;
 	
 	if (myfile.is_open()) {
 		int cont=0;
 
 	    // TODO: Leer el tamaño de la matriz e inicializarla
-		int size;
-		char** dungeon = NULL;
-		char** newMatrix = NULL;
-		char** thirdMatrix = NULL;
 
 		myfile >> size;
 
 		dungeon = initializeMatrix();
+		level1 = initializeMatrix();
+		level2 = initializeMatrix();
+		level3 = initializeMatrix();
 
 		// Llenar la matriz desde el archivo.
 
@@ -35,46 +42,45 @@ int main(int argc, char* argv[]) {
 			}
 		}
 
-
-		myfile.close();
-		for(int i = 0; i < 20; i++) {
-			for(int j = 0; j < 20; j++) {
-				thirdMatrix[i][j] = dungeon[i][j];
+		for(int i = 0; i < size; i++) {
+			for(int j = 0; j < size; j++) {
+				level1[i][j] = dungeon[i][j];
+				level2[i][j] = dungeon[i][j];
+				level3[i][j] = dungeon[i][j];
 			}
 		}
+
+		myfile.close();
 
 		do {
 			cout << "Ingrese el nivel (1, 2 ó 3): ";
 			cin >> option;
 
-
 			if (option == 1) {
-				newMatrix= thirdMatrix;
-				newMatrix = setEnemies(thirdMatrix, 5); // El 5 es por el nivel 1.
+				 setEnemies(level1, 5); // El 5 es por el nivel 1.
 
-				cout << endl;
-				getOut(dungeon, size, 1, 0);
-				freeMatrix(dungeon, size);
+				getOut(level1, size, 1, 0);
 			} else if (option == 2) {
-				newMatrix= thirdMatrix;
-				newMatrix = setEnemies(thirdMatrix, 10); // El 5 es por el nivel 1.
+				setEnemies(level2, 10); // El 5 es por el nivel 1.
 
-				getOut(dungeon, size, 1, 0);
-				freeMatrix(dungeon, size);
+				getOut(level2, size, 1, 0);
 			} else if (option == 3) {
-				newMatrix= thirdMatrix;
-				newMatrix = setEnemies(thirdMatrix, 15); // El 5 es por el nivel 1.
+				setEnemies(level3, 15); // El 5 es por el nivel 1.
 				
-				getOut(dungeon, size, 1, 0);
-				freeMatrix(dungeon, size);
+				getOut(level3, size, 1, 0);
 			} else {
 				option = 4;
 			}
+			
+			cout << endl;
 		} while (option != 4);
+
 	} else {
 		cout << "El archivo no existe"; 
 	}
 
+	freeMatrix(dungeon, size);
+	
 	return 0;
 }
 
@@ -88,7 +94,7 @@ char** initializeMatrix() {
 	return matrix;
 }
 
-char** setEnemies(char** matrix, int enemies) {
+void setEnemies(char** matrix, int enemies) {
 	int numberX, numberY; // Coordenadas donde se agregará el enemigo.
 
 	srand(time(NULL));
@@ -101,8 +107,6 @@ char** setEnemies(char** matrix, int enemies) {
 		
 		matrix[numberX][numberY] = 'E';
 	}
-
-	return matrix;
 }
 
 void printMatrix(char** matrix, int size) {
