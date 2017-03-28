@@ -1,4 +1,6 @@
 #include "Includes.h"
+#include <ncurses.h>
+#include <curses.h>
 
 char** initializeMatrix(); // Crea la matriz donde se ubicarán los enemigos, el tesoro y la fuente de salud.
 void printMatrix(char**, int); // Imprime la matriz.
@@ -26,6 +28,12 @@ int main(int argc, char* argv[]) {
 		int cont=0;
 
 	    // TODO: Leer el tamaño de la matriz e inicializarla
+<<<<<<< HEAD
+		int size;
+		char** dungeon = NULL;
+		char** newMatrix = NULL;
+=======
+>>>>>>> 0d41f43576ca06d5c02d5a126aa400b3b6d0176f
 
 		myfile >> size;
 
@@ -42,6 +50,9 @@ int main(int argc, char* argv[]) {
 			}
 		}
 
+<<<<<<< HEAD
+		myfile.close();
+=======
 		for(int i = 0; i < size; i++) {
 			for(int j = 0; j < size; j++) {
 				level1[i][j] = dungeon[i][j];
@@ -49,23 +60,43 @@ int main(int argc, char* argv[]) {
 				level3[i][j] = dungeon[i][j];
 			}
 		}
+>>>>>>> 0d41f43576ca06d5c02d5a126aa400b3b6d0176f
 
 		myfile.close();
-
+		initscr();
 		do {
-			cout << "Ingrese el nivel (1, 2 ó 3): ";
-			cin >> option;
+			/*cout << "Ingrese el nivel (1, 2 ó 3): ";
+			cin >> option;*/
+			move(1 , 25);
+			printw("Ingrese el nivel (1, 2 ó 3): ");
+			
+			option = getch();
+			addch(option);
+			refresh();
 
+			
 			if (option == 1) {
+<<<<<<< HEAD
+				newMatrix = setEnemies(dungeon, 5); // El 5 es por el nivel 1.
+=======
 				 setEnemies(level1, 5); // El 5 es por el nivel 1.
+>>>>>>> 0d41f43576ca06d5c02d5a126aa400b3b6d0176f
 
-				getOut(level1, size, 1, 0);
+				 getOut(level1, size, 1, 0);
 			} else if (option == 2) {
+<<<<<<< HEAD
+				newMatrix = setEnemies(dungeon, 10); // El 5 es por el nivel 1.
+=======
 				setEnemies(level2, 10); // El 5 es por el nivel 1.
+>>>>>>> 0d41f43576ca06d5c02d5a126aa400b3b6d0176f
 
 				getOut(level2, size, 1, 0);
 			} else if (option == 3) {
+<<<<<<< HEAD
+				newMatrix = setEnemies(dungeon, 15); // El 5 es por el nivel 1.
+=======
 				setEnemies(level3, 15); // El 5 es por el nivel 1.
+>>>>>>> 0d41f43576ca06d5c02d5a126aa400b3b6d0176f
 				
 				getOut(level3, size, 1, 0);
 			} else {
@@ -78,6 +109,7 @@ int main(int argc, char* argv[]) {
 	} else {
 		cout << "El archivo no existe"; 
 	}
+	endwin();
 
 	freeMatrix(dungeon, size);
 	
@@ -110,12 +142,15 @@ void setEnemies(char** matrix, int enemies) {
 }
 
 void printMatrix(char** matrix, int size) {
+	move(1,0);
 	for (int i = 0; i < size; ++i) {
 		for (int j = 0; j < size; ++j) {
-			cout << matrix[i][j];
+			//cout << matrix[i][j];
+			mvaddch(i+1 , j , matrix[i][j]);
+			refresh();
 		}
 
-		cout << endl;
+		//cout << endl;
 	}
 }
 

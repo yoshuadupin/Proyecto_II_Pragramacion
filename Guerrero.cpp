@@ -6,6 +6,7 @@ Guerrero::Guerrero(){
 	ataque = 25;
 	defensa = 10;
 	suerte = 5;	
+	exp=0;
 }		
 	
  int Guerrero::atacar(){

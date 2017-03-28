@@ -35,7 +35,7 @@ Sacerdote::Sacerdote(){
 	nombre = "SpeedWagon";
 	ataque = arma->getAtaque();
 	defensa = def;
-	
+	exp=0;
 	vida = 175;
 	nombre = "Padre Wolliver";
 	suerte = 4;	

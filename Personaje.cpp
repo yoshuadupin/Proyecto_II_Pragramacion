@@ -43,5 +43,10 @@ void Personaje::setDefensa(int defensa){
 	this->defensa = defensa;
 }
 
+int Personaje::EXP(){
+	srand(time(NULL));
+	return ( rand() % 51 + 10);
+}
+
 
 

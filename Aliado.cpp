@@ -48,13 +48,11 @@ bool Aliado::esquivar(){
 	return 0;
 }
 
-/*ostream& Aliado::operator << (ostream&, const Aliado& aliado){
-	out<<aliado.toString();
-	return out;
-} // Operador de flujo.*/
 
-int Aliado::operator+(Enemigo enemigo){
-	return 0;
+
+void Aliado::operator+(Enemigo enemigo){
+	exp+=enemigo.EXP();
+	
 }
 
 string Aliado::toString()const {
