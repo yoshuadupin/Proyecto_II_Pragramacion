@@ -242,13 +242,13 @@ bool batalla(Personaje* aliado, Personaje* enemigo){
 			mvprintw(5 , 21 , "->Aliado ataca");
 			ataqueA = aliado -> atacar();
 		} else if (opcion == '3') {
-			mvprintw(5 , 21 , "->Corrio");
+			mvprintw(5 , 21 , "->Corrio       ");
 			correA = aliado -> correr();
 		} else if (opcion == '2') {
-			mvprintw(5 , 21 , "->Uso defensa");
+			mvprintw(5 , 21 , "->Uso defensa   ");
 			defensaA = aliado -> defender();
 		} else if (opcion == '4') {
-			mvprintw(5 , 21 , "->uso esquivar");
+			mvprintw(5 , 21 , "->uso esquivar  ");
 			esquivarA = aliado -> esquivar();
 		}
 		refresh();
@@ -261,12 +261,12 @@ bool batalla(Personaje* aliado, Personaje* enemigo){
 		opcion = ((char)(dynamic_cast<Enemigo*>(enemigo) -> decidirQueHacer()));
 		refresh();
 		if (opcion == '1') {
-			mvprintw(9 , 21 , "->Aliado ataca");
+			mvprintw(9 , 21 , "->Aliado ataca    ");
 			ataqueEne = enemigo -> atacar();
 			//cout << "Ataque: " << enemigo -> getAtaque() << endl;
 			refresh();
 		} else if (opcion == '3') {
-			mvprintw(9 , 21 , "->Corrio");
+			mvprintw(9 , 21 , "->Corrio          ");
 			correEne = enemigo -> correr();
 			refresh();
 		} else if (opcion == '2') {
@@ -338,14 +338,14 @@ bool batalla(Personaje* aliado, Personaje* enemigo){
 			}
 		}
 		refresh();
-		//getch();
-		/*mvprintw(14 , 21 ,"");
-		mvprintw(15 , 21 ,"");
-		mvprintw(16 , 21 ,"");
-		mvprintw(17 , 21 ,"");
-		*/
-		//refresh();
-			
+		getch();
+		/*mvprintw(14 , 21 ,"                    ");
+		mvprintw(15 , 21 ,"                    ");
+		mvprintw(16 , 21 ,"                    ");
+		mvprintw(17 , 21 ,"                    ");
+		
+		refresh();
+*/
 	} while(aliado -> getVida() > 0 && enemigo -> getVida() > 0 && !correA && !correEne);	
 	
 	if (correA && aliado -> getVida() > 0) {
@@ -362,8 +362,8 @@ bool batalla(Personaje* aliado, Personaje* enemigo){
 	}
 
 	refresh();
-
 	clear();
+	
 
 	
 }
